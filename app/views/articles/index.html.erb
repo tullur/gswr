@@ -3,9 +3,17 @@
   <p>
     <h1>Listing articles</h1>
     <%= link_to 'New Article', new_article_path, class: "btn btn-primary" %>
+    <%= form_tag(articles_path, method: "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+    <%= submit_tag "Search" %>
+    <% end %>
   </p>
 
   <br>
+
+  <% if @article.present? %>
+    <p> <%= render @articles %> </p>
+  <% end %>
 
   <table class="table">
 
