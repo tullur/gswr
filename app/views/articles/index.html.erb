@@ -3,13 +3,14 @@
   <p>
     <h1>Listing articles</h1>
     <%= link_to 'New Article', new_article_path, class: "btn btn-primary" %>
+  </p>
+
+  <p>
     <%= form_tag(articles_path, method: "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Articles" %>
     <%= submit_tag "Search" %>
     <% end %>
   </p>
-
-  <br>
 
   <table class="table">
 
@@ -37,5 +38,5 @@
 
   </table>
 
-  <%= link_to 'Back', root_path %>
+  <%= link_to 'Back', articles_path %>
 </div>
