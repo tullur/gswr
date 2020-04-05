@@ -11,6 +11,17 @@
     <%= @article.text %>
   </p>
 
+    <p class="lead">
+    <strong>Author:</strong>
+    <%= @article.user.username %>
+  </p>
+
+  <small>Created by: <%= @article.user.username if @article.user %>,
+      <%= time_ago_in_words(@article.created_at) %> ago,
+      last updated: <%= time_ago_in_words(@article.updated_at) %> ago
+</small>
+
+
   <hr>
 
   <h2>Comments</h2>
