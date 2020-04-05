@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @articles = Article.search(params[:search]) unless params[:search].blank?
-    @articles = @articles.title unless params[:title].blank?
+    # @articles = @articles.title unless params[:title].blank?
   end
 
   def show; end
