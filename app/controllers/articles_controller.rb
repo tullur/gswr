@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: 'root', password: 'root', expect: %i[index show]
   before_action :set_article, only: %i[show edit update destroy]
 
   def index
