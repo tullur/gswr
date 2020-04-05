@@ -7,7 +7,7 @@ class Article < ApplicationRecord
   validates :title, presence: true,
                     length: { minimum: 3 },
                     allow_blank: false
-  validates :body, presence: true,
+  validates :text, presence: true,
                    length: { in: 5..100 },
                    allow_blank: false
 
