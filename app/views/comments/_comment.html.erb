@@ -4,7 +4,14 @@
       <%= image_tag comment.user.avatar.variant(resize: '100x100'), class: "rounded-circle" %>
     <% end %>
 
-    <%= comment.body %>
+    <p class="lead">
+      <strong>Username:</strong>
+      <%= comment.user.username %>
+    </p>
+
+    <p class="lead">
+      <%= comment.body %>
+    </p>
 
     <p>
     <% if logged_in? && (current_user == comment.user) %>
