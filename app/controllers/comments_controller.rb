@@ -7,12 +7,13 @@ class CommentsController < ApplicationController
     @comment = @article.comments.create(comment_params)
     @comment.user = current_user
 
-    redirect_to article_path(@article)
+    redirect_to article_path(@article) if @comment.save
+    # render json: { errors: @comment.errors }, status: :unprocessable_entity unless @comment.save
   end
 
   def destroy
     @comment = @article.comments.find(params[:id])
-    @comment.destroy if @comment.user == @current_user
+    @comment.destroy if @comment.user == current_user
 
     redirect_to article_path(@article)
   end
