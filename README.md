@@ -21,4 +21,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* [Heroku](https://intense-garden-20337.herokuapp.com) 
+* [Heroku](https://floating-tundra-86959.herokuapp.com)
