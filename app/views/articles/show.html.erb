@@ -3,7 +3,13 @@
     <strong>Title:</strong>
     <%= @article.title %>
   </h1>
+<% if logged_in? && (current_user == @article.user) %>
+  <%= link_to 'Edit', edit_article_path(@article) %>
 
+  <%= link_to 'Destroy', article_path(@article),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+<% end %>
   <hr>
 
   <p class="lead">
@@ -14,7 +20,9 @@
     <p class="lead">
     <strong>Author:</strong>
     <%= @article.user.username %>
-    <%= image_tag @article.user.avatar.variant(resize: '100x100') %>
+    <% if @article.user.avatar.attached? %>
+      <%= image_tag @article.user.avatar.variant(resize: '100x100') %>
+    <% end %>
   </p>
 
   <small>Created by: <%= @article.user.username if @article.user %>,
@@ -27,14 +35,14 @@
 
   <h2>Comments</h2>
   <%= render @article.comments %>
-
-  <div class="card my-4">
-    <h5 class="card-header">Leave a Comment:</h5>
-    <div class="card-body">
-      <%= render 'comments/form' %>
+  <% if logged_in? %>
+    <div class="card my-4">
+      <h5 class="card-header">Leave a Comment:</h5>
+      <div class="card-body">
+        <%= render 'comments/form' %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
- 
-<%= link_to 'Edit', edit_article_path(@article) %> |
+
 <%= link_to 'Back', articles_path %>

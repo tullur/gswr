@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <%= link_to "Blog", root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,6 +10,23 @@
       </li>
       <li class="nav-item">
         <%= link_to "Articles", articles_path, class: "nav-link" %>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+      <li><%= link_to 'Log out', logout_path, class: "btn btn-danger" %></li>
+      <li class="dropdown">
+        <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        Your Profile</a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><%= link_to "Edit your profile", edit_user_path(current_user) , class: "dropdown-item"%></li>
+          <li><%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %></li>
+        <% else %>
+            <li><%= link_to 'Login', login_path , class: "dropdown-item"%></li>
+            <li><%= link_to 'Sign up', signup_path , class: "dropdown-item"%></li>
+        <% end %>
+        </ul>
       </li>
     </ul>
   </div>

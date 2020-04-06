@@ -1,12 +1,18 @@
 <div class="media">
   <div class="media-body">
+    <% if comment.user.avatar.attached? %>
+      <%= image_tag comment.user.avatar.variant(resize: '100x100'), class: "rounded-circle" %>
+    <% end %>
+
     <%= comment.body %>
 
     <p>
-    <%= link_to 'Destroy Comment', 
-      [comment.article, comment],
-      method: :delete,
-      data: { confirm: 'Are you sure?' } %>
+    <% if logged_in? && (current_user == comment.user) %>
+      <%= link_to 'Destroy Comment', 
+        [comment.article, comment],
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </p>
   </div>
 </div>

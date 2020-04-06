@@ -12,5 +12,9 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :comments do
+    resources :comments
+  end
+
   root 'welcome#index'
 end
