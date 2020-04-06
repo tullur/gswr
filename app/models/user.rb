@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   has_secure_password
+  has_one_attached :avatar
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -14,4 +15,5 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: { case_sensetive: false },
                     format: { with: EMAIL_REGEXP }
+  validates :password, length: { minimum: 6 }
 end

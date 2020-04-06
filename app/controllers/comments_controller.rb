@@ -5,13 +5,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @article.comments.create(comment_params)
+    @comment.user = current_user
 
     redirect_to article_path(@article)
   end
 
   def destroy
     @comment = @article.comments.find(params[:id])
-    @comment.destroy
+    @comment.destroy if @comment.user == @current_user
 
     redirect_to article_path(@article)
   end
