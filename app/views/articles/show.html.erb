@@ -14,6 +14,7 @@
     <p class="lead">
     <strong>Author:</strong>
     <%= @article.user.username %>
+    <%= image_tag @article.user.avatar.variant(resize: '100x100') %>
   </p>
 
   <small>Created by: <%= @article.user.username if @article.user %>,
