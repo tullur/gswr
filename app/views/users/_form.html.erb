@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-lg">
     <%= form_with(model: @user, local: true, html: {class: "form-horizontal", role: "form"}) do |form| %>
       <% if @user.errors.any? %>
         <div id="error_explanation">
@@ -13,27 +13,45 @@
         </div>
       <% end %>
 
-      <div class="field">
-        <%= form.label :username %>
-        <%= form.text_field :username %>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= form.label :username %>
+        </div>
+
+        <div class="col-sm-8">
+          <%= form.text_field :username, class: "form-control", placeholder: "Enter username", autofocuse: true %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= form.label :email %>
-        <%= form.text_field :email %>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= form.label :email %>
+        </div>
+
+          <div class="col-sm-8">
+          <%= form.email_field :email, class: "form-control", placeholder: "Enter email" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= form.label :password %>
-        <%= form.password_field :password %>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= form.label :password %>
+        </div>
+        <div class="col-sm-8">
+          <%= form.password_field :password, class: "form-control", placeholder: "Enter password" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= form.label :password_confirmation %>
-        <%= form.password_field :password_confirmation %>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= form.label :password_confirmation %>
+        </div>
+        <div class="col-sm-8">
+          <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Enter password" %>
+        </div>
       </div>
 
-      <div class="field">
+      <div class="form-group">
         <%= form.file_field :avatar %>
       </div>
 
